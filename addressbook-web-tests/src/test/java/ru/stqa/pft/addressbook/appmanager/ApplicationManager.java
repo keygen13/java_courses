@@ -23,7 +23,6 @@ public class ApplicationManager {
         sessionHelper.login("admin", "secret");
     }
 
-
     public void stop() {
         wd.quit();
     }

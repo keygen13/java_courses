@@ -12,8 +12,8 @@ public class HelperBase {
         this.wd = wd;
     }
 
-    protected void click(String submit) {
-        wd.findElement(By.name(String.valueOf(submit))).click();
+    protected void click(By locator) {
+        wd.findElement(locator).click();
     }
 
     protected void type(By locator, String text) {

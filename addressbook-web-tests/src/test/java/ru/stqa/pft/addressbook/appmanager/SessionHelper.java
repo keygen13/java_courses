@@ -13,6 +13,10 @@ public class SessionHelper extends HelperBase {
         wd.get("http://localhost/addressbook/");
         type(By.name("user"),username);
         type(By.name("pass"), password);
-        wd.findElement(By.xpath("//input[@value='Login']")).click();
+        click(By.xpath("//input[@value='Login']"));
     }
+
+   // private void click2(By locator) {
+   //     wd.findElement(locator).click();
+   // }
 }

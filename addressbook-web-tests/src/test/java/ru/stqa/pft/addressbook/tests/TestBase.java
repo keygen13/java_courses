@@ -8,14 +8,13 @@ import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
     protected WebDriver wd;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         app.init();
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {

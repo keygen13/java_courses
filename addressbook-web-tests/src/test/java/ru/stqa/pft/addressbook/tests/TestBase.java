@@ -8,7 +8,7 @@ import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
     protected WebDriver wd;
 
     @BeforeMethod(alwaysRun = true)

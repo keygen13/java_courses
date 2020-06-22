@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactCreation() {
     if (! app.getGroupHelper().isThereTestGroup()) {
       app.getGroupHelper().createGroup(new GroupData("test4", "test5", "test6"));

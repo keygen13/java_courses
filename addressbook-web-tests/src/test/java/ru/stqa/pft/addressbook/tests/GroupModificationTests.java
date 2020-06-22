@@ -13,12 +13,13 @@ public class GroupModificationTests extends TestBase {
     public void testGroupModification() {
         app.goTo().groupPage();
         if(app.group().list().size() == 0) {
-            app.group().create(new GroupData("test4", "test5", "test6"));
+            app.group().create(new GroupData().withName("test4"));
         }
 
         List<GroupData> before = app.group().list();
         int index = before.size() - 1;
-        GroupData group = new GroupData(before.get(index).getId(), "ModificatedTest4", "ModificatedTest5", "ModificatedTest6");
+        GroupData group = new GroupData()
+                .withId(before.get(index).getId()).withName("ModificatedTest4").withHeader("ModificatedTest5").withFooter("ModificatedTest6");
         app.group().modify(index, group);
         List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size());

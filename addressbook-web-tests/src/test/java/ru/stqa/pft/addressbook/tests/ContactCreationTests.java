@@ -13,7 +13,7 @@ public class ContactCreationTests extends TestBase {
   @Test(enabled = true)
   public void testContactCreation() {
     if (! app.group().isThereTestGroup()) {
-      app.group().create(new GroupData("test4", "test5", "test6"));
+      app.group().create(new GroupData().withName("test4").withHeader("test5").withFooter("test6"));
     }
     app.goTo().goToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();

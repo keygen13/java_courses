@@ -22,8 +22,7 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletion() {
         Set<ContactData> before = app.getContactHelper().all();
         ContactData contactToDelete = before.iterator().next();
-        app.getContactHelper().selectContactById(contactToDelete.getId());
-        app.getContactHelper().deleteSelectedContacts();
+        app.getContactHelper().deleteContact(contactToDelete);
         app.goTo().goToHomePage();
 
         Set<ContactData> after = app.getContactHelper().all();

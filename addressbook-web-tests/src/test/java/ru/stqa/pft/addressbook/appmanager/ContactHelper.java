@@ -49,8 +49,8 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
-    public void deleteSelectedContacts() {
-
+    public void deleteContact(ContactData contact) {
+        selectContactById(contact.getId());
         click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
     }

@@ -26,6 +26,8 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"),contactData.getLastname());
         type(By.name("address"),contactData.getAddress());
         type(By.name("home"),contactData.getHomePhone());
+        type(By.name("work"),contactData.getWorkPhone());
+        type(By.name("mobile"),contactData.getMobilePhone());
         type(By.name("email"),contactData.getEmail());
 
         if(creation) {
@@ -88,9 +90,20 @@ public class ContactHelper extends HelperBase {
             List<WebElement> cells = w.findElements(By.tagName("td"));
             String lastname = cells.get(1).getText();
             String firstname = cells.get(2).getText();
+            String[] phones = cells.get(5).getText().split("\n");
+
             System.out.println(firstname + " " + lastname);
             int id = Integer.parseInt(w.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+
+            ContactData contactData = new ContactData()
+                .withId(id)
+                .withFirstname(firstname)
+                .withLastname(lastname)
+                .withHomePhone(phones[0])
+                .withMobilePhone(phones[1])
+                .withWorkPhone(phones[2]);
+
+            contacts.add(contactData);
         }
         System.out.println("---------------");
         return contacts;

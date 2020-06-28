@@ -82,12 +82,12 @@ public class ContactData {
     }
 
     public ContactData withWorkPhone(String workphone) {
-        this.homephone = workphone;
+        this.workphone = workphone;
         return this;
     }
 
     public ContactData withMobilePhone(String mobilephone) {
-        this.homephone = mobilephone;
+        this.mobilephone = mobilephone;
         return this;
     }
 

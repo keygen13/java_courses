@@ -15,8 +15,8 @@ public class ContactModificationTests extends TestBase {
     public void ensurePrecondition() {
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData().withFirstname("Goldie").withMiddlename("Jeanne")
-                    .withLastname("Hawn").withAddress("Hollywood").withHomePhone("555555").withEmail("goldie@12.ru")
-                    .withGroup("test4"), true);
+                    .withLastname("Hawn").withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421")
+                    .withWorkPhone("223 444").withEmail("goldie@12.ru").withGroup("test4"), true);
         }
     }
 
@@ -27,7 +27,8 @@ public class ContactModificationTests extends TestBase {
 
         ContactData contactToModify = before.iterator().next();
         ContactData contact = new ContactData().withId(contactToModify.getId()).withFirstname("Aloy")
-                .withMiddlename("").withLastname("Sobeck").withAddress("Nora").withEmail("nora.cave@12.ru");
+                .withMiddlename("").withLastname("Sobeck").withAddress("Nora").withEmail("nora.cave@12.ru")
+                .withHomePhone("55555-5").withMobilePhone("+3421").withWorkPhone("223 444");
 
         app.getContactHelper().initContactModification(contactToModify);
         app.getContactHelper().fillContactForm(contact, false);

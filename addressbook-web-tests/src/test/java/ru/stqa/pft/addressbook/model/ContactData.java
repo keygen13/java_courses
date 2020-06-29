@@ -12,22 +12,16 @@ public class ContactData {
     private  String workphone;
     private  String mobilephone;
     private  String email;
+    private  String email2;
+    private  String email3;
     private  String group;
     private  String allphones;
-
-    public String getAllPhones() {
-        return allphones;
-    }
-
-    public ContactData withAllPhones(String allphones) {
-        this.allphones = allphones;
-        return this;
-    }
+    private  String allemails;
 
 
-    public void setId(int id) {
+    /*public void setId(int id) {
         this.id = id;
-    }
+    } */
 
     public int getId() { return id; }
 
@@ -59,8 +53,20 @@ public class ContactData {
         return mobilephone;
     }
 
+    public String getAllPhones() {
+        return allphones;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public String getEmail2() { return email2; }
+
+    public String getEmail3() { return email3; }
+
+    public String getAllEmails() {
+        return allemails;
     }
 
     public String getGroup() { return group; }
@@ -105,8 +111,28 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withAllPhones(String allphones) {
+        this.allphones = allphones;
+        return this;
+    }
+
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public ContactData withAllEmails(String allemails) {
+        this.allemails = allemails;
         return this;
     }
 

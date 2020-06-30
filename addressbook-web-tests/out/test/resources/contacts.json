@@ -7,7 +7,8 @@
     "homephone": "5555-550",
     "workphone": "223 4440",
     "mobilephone": "+34210",
-    "email": "goldie@12.ru"
+    "email": "goldie0@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 1",
@@ -17,7 +18,8 @@
     "homephone": "5555-551",
     "workphone": "223 4441",
     "mobilephone": "+34211",
-    "email": "goldie@12.ru"
+    "email": "goldie1@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 2",
@@ -27,7 +29,8 @@
     "homephone": "5555-552",
     "workphone": "223 4442",
     "mobilephone": "+34212",
-    "email": "goldie@12.ru"
+    "email": "goldie2@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 3",
@@ -37,7 +40,8 @@
     "homephone": "5555-553",
     "workphone": "223 4443",
     "mobilephone": "+34213",
-    "email": "goldie@12.ru"
+    "email": "goldie3@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 4",
@@ -47,7 +51,8 @@
     "homephone": "5555-554",
     "workphone": "223 4444",
     "mobilephone": "+34214",
-    "email": "goldie@12.ru"
+    "email": "goldie4@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 5",
@@ -57,7 +62,8 @@
     "homephone": "5555-555",
     "workphone": "223 4445",
     "mobilephone": "+34215",
-    "email": "goldie@12.ru"
+    "email": "goldie5@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 6",
@@ -67,7 +73,8 @@
     "homephone": "5555-556",
     "workphone": "223 4446",
     "mobilephone": "+34216",
-    "email": "goldie@12.ru"
+    "email": "goldie6@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 7",
@@ -77,7 +84,8 @@
     "homephone": "5555-557",
     "workphone": "223 4447",
     "mobilephone": "+34217",
-    "email": "goldie@12.ru"
+    "email": "goldie7@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 8",
@@ -87,7 +95,8 @@
     "homephone": "5555-558",
     "workphone": "223 4448",
     "mobilephone": "+34218",
-    "email": "goldie@12.ru"
+    "email": "goldie8@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 9",
@@ -97,7 +106,8 @@
     "homephone": "5555-559",
     "workphone": "223 4449",
     "mobilephone": "+34219",
-    "email": "goldie@12.ru"
+    "email": "goldie9@12.ru",
+    "group": "test4"
   },
   {
     "firstname": "Goldie 10",
@@ -107,6 +117,7 @@
     "homephone": "5555-5510",
     "workphone": "223 44410",
     "mobilephone": "+342110",
-    "email": "goldie@12.ru"
+    "email": "goldie10@12.ru",
+    "group": "test4"
   }
 ]

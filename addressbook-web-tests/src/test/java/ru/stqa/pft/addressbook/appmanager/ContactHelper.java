@@ -26,8 +26,8 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"),contactData.getLastname());
         type(By.name("address"),contactData.getAddress());
         type(By.name("home"),contactData.getHomePhone());
-        type(By.name("work"),contactData.getWorkPhone());
         type(By.name("mobile"),contactData.getMobilePhone());
+        type(By.name("work"),contactData.getWorkPhone());
         type(By.name("email"),contactData.getEmail());
         attach(By.name("photo"), contactData.getPhoto());
 
@@ -94,8 +94,6 @@ public class ContactHelper extends HelperBase {
             String allPhones = cells.get(5).getText();
             String allEmails = cells.get(4).getText();
             String address = cells.get(3).getText();
-
-            System.out.println(firstname + " " + lastname);
             int id = Integer.parseInt(w.findElement(By.tagName("input")).getAttribute("value"));
 
             ContactData contactData = new ContactData()

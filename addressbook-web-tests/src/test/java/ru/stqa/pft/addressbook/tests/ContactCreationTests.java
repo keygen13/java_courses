@@ -50,10 +50,7 @@ public class ContactCreationTests extends TestBase {
     File photo = new File("src/test/resources/goldie.jpg");
     Contacts before = app.getContactHelper().all();
     contact.withPhoto(photo);
-    //ContactData contact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
-    //      .withAddress("Hollywood").withHomePhone("5555-55").withMobilePhone("+3421").withWorkPhone("223 444")
-    //    .withEmail("goldie@12.ru").withPhoto(photo).withGroup("test4");
-    
+
     app.getContactHelper().createContact(contact, true);
     Set<ContactData> after = app.getContactHelper().all();
     assertThat(after.size(), equalTo(before.size() + 1));

@@ -23,8 +23,6 @@ public class ContactModificationTests extends TestBase {
             ContactData newContact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
                     .withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421").withWorkPhone("223 444")
                     .withEmail("goldie@12.ru").inGroup(groups.iterator().next()).withPhoto(photo);
-            System.out.println(newContact);
-            System.out.println(newContact.getGroups());
             app.getContactHelper().createContact(newContact, true);
         }
     }

@@ -25,10 +25,10 @@ public class ContactCreationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePrecondition() {
-    if (! app.group().isThereTestGroup()) {
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
       app.group().create(new GroupData().withName("test4").withHeader("test5").withFooter("test6"));
     }
-    app.goTo().goToHomePage();
   }
 
   @DataProvider
@@ -48,11 +48,11 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContactsFromJSON")
   public void testContactCreation(ContactData contact) {
     File photo = new File("src/test/resources/goldie.jpg");
-    Contacts before = app.getContactHelper().all();
+    Contacts before = app.db().contacts();
     contact.withPhoto(photo);
-
+    app.goTo().goToHomePage();
     app.getContactHelper().createContact(contact, true);
-    Set<ContactData> after = app.getContactHelper().all();
+    Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(

@@ -37,11 +37,14 @@ public class ContactData {
     @Type(type = "text")
     private  String mobilephone;
     @Expose
-    @Transient
+    @Column(name = "email")
+    @Type(type = "text")
     private  String email;
-    @Transient
+    @Column(name = "email2")
+    @Type(type = "text")
     private  String email2;
-    @Transient
+    @Column(name = "email3")
+    @Type(type = "text")
     private  String email3;
     @Expose
     @Transient

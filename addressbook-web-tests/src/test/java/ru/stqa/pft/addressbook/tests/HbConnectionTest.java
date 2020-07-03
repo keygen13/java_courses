@@ -45,4 +45,17 @@ public class HbConnectionTest {
         session.close();
 
     }
+
+    @Test
+    public void testHbConnection2() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session.createQuery( "from ContactData where id = :neededId" ).setParameter("neededId", 110).list();
+        for ( ContactData contact : result ) {
+            System.out.println(contact);
+        }
+        session.getTransaction().commit();
+        session.close();
+
+    }
 }

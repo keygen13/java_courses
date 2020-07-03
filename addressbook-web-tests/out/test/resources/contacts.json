@@ -7,8 +7,7 @@
     "homephone": "5555-550",
     "workphone": "223 4440",
     "mobilephone": "+34210",
-    "email": "goldie0@12.ru",
-    "group": "test4"
+    "email": "goldie0@12.ru"
   },
   {
     "firstname": "Goldie 1",
@@ -18,8 +17,7 @@
     "homephone": "5555-551",
     "workphone": "223 4441",
     "mobilephone": "+34211",
-    "email": "goldie1@12.ru",
-    "group": "test4"
+    "email": "goldie1@12.ru"
   },
   {
     "firstname": "Goldie 2",
@@ -29,7 +27,6 @@
     "homephone": "5555-552",
     "workphone": "223 4442",
     "mobilephone": "+34212",
-    "email": "goldie2@12.ru",
-    "group": "test4"
+    "email": "goldie2@12.ru"
   }
 ]

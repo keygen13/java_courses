@@ -57,7 +57,7 @@ public class ContactDataGenerator {
                     .withMobilePhone(String.format("+3421%s", i))
                     .withWorkPhone(String.format("223 444%s", i))
                     .withEmail(String.format("goldie%s@12.ru", i))
-                    .withGroup("test4").withPhoto(photo));
+                    .withPhoto(photo));
         }
         return contacts;
     }

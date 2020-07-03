@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 
@@ -16,10 +17,15 @@ public class ContactModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         if (app.db().contacts().size() == 0) {
+            Groups groups = app.db().groups();
+            File photo = new File("src/test/resources/goldie.jpg");
             app.goTo().goToHomePage();
-            app.getContactHelper().createContact(new ContactData().withFirstname("Goldie").withMiddlename("Jeanne")
-                    .withLastname("Hawn").withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421")
-                    .withWorkPhone("223 444").withEmail("goldie@12.ru").withGroup("test4"), true);
+            ContactData newContact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
+                    .withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421").withWorkPhone("223 444")
+                    .withEmail("goldie@12.ru").inGroup(groups.iterator().next()).withPhoto(photo);
+            System.out.println(newContact);
+            System.out.println(newContact.getGroups());
+            app.getContactHelper().createContact(newContact, true);
         }
     }
 

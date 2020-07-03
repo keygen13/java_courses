@@ -50,6 +50,7 @@ public class ContactHelper extends HelperBase {
         selectContactById(contact.getId());
         click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
+        wd.findElement(By.cssSelector("div.msgbox"));
     }
 
     public void initContactModification(ContactData contact) {

@@ -1,11 +1,14 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
+
+import java.io.File;
 
 public class AddingContactToGroup extends TestBase{
 
@@ -24,9 +27,10 @@ public class AddingContactToGroup extends TestBase{
             }
         }
         if(testContact == null) {
+            File photo = new File("src/test/resources/goldie.jpg");
             testContact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
                     .withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421").withWorkPhone("223 444")
-                    .withEmail("goldie@12.ru");
+                    .withEmail("goldie@12.ru").withPhoto(photo);
             app.getContactHelper().createContact(testContact, true);
         }
     }
@@ -56,7 +60,6 @@ public class AddingContactToGroup extends TestBase{
         app.goTo().goToHomePage();
         app.getContactHelper().selectContactById(testContact.getId());
         app.getContactHelper().addSelectedContactToGroup(testGroup);
-
 
         //Assert.assertTrue(testContact.getGroups().contains(testGroup));
 

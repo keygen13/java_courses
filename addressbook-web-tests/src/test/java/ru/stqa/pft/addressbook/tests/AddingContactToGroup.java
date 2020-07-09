@@ -9,6 +9,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
+import java.util.stream.Collectors;
 
 public class AddingContactToGroup extends TestBase{
 
@@ -22,17 +23,14 @@ public class AddingContactToGroup extends TestBase{
         ContactData testContact = null;
         for(ContactData contact : contacts) {
             if(contact.getGroups().size() < app.db().groups().size()) {
-                testContact = contact;
                 return;
             }
         }
-        if(testContact == null) {
             File photo = new File("src/test/resources/goldie.jpg");
             testContact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
                     .withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421").withWorkPhone("223 444")
                     .withEmail("goldie@12.ru").withPhoto(photo);
             app.getContactHelper().createContact(testContact, true);
-        }
     }
 
     @Test
@@ -61,7 +59,17 @@ public class AddingContactToGroup extends TestBase{
         app.getContactHelper().selectContactById(testContact.getId());
         app.getContactHelper().addSelectedContactToGroup(testGroup);
 
-        //Assert.assertTrue(testContact.getGroups().contains(testGroup));
+        Contacts contacts2 = app.db().contacts();
+
+        int testContactId = testContact.getId();
+
+        ContactData testContact2 = contacts2
+                .stream()
+                .filter((s) -> s.getId() == testContactId)
+                .collect(Collectors.toList())
+                .get(0);
+
+        Assert.assertTrue(testContact2.getGroups().contains(testGroup));
 
     }
 

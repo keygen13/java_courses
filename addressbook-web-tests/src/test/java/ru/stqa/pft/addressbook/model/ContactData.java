@@ -220,3 +220,4 @@ public class ContactData {
         return this;
     }
 }
+

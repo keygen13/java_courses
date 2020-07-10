@@ -31,7 +31,7 @@ public class RemoveContactFromGroup {
         File photo = new File("src/test/resources/goldie.jpg");
         testContact = new ContactData().withFirstname("Goldie").withMiddlename("Jeanne").withLastname("Hawn")
                 .withAddress("Hollywood").withHomePhone("555555").withMobilePhone("+3421").withWorkPhone("223 444")
-                .withEmail("goldie@12.ru").withPhoto(photo);
+                .withEmail("goldie@12.ru").withPhoto(photo).inGroup(app.db().groups().iterator().next());
         app.getContactHelper().createContact(testContact, true);
     }
 
@@ -40,20 +40,13 @@ public class RemoveContactFromGroup {
         ContactData testContact = null;
         Contacts contacts = app.db().contacts();
         for(ContactData contact : contacts) {
-            if(contact.getGroups().size() < app.db().groups().size()) {
+            if(contact.getGroups().size() > 0) {
                 testContact = contact;
                 break;
             }
         }
-        GroupData testGroup = null;
-        Groups testContactGroups = testContact.getGroups();
-        Groups groups = app.db().groups();
-        for(GroupData group : groups) {
-            if(!testContactGroups.contains(group)) {
-                testGroup = group;
-                break;
-            }
-        }
+        GroupData testGroup = testContact.getGroups().iterator().next();
+
         System.out.println(testContact);
         System.out.println(testGroup);
 

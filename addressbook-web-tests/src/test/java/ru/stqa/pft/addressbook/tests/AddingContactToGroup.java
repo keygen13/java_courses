@@ -15,6 +15,7 @@ public class AddingContactToGroup extends TestBase{
 
     @BeforeMethod
     public void ensurePrecondition() {
+        System.out.println("number of groups: " + app.db().groups().size());
         if(app.db().groups().size() == 0) {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test4"));
@@ -63,13 +64,13 @@ public class AddingContactToGroup extends TestBase{
 
         int testContactId = testContact.getId();
 
-        ContactData testContact2 = contacts2
+        ContactData testContactModified = contacts2
                 .stream()
                 .filter((s) -> s.getId() == testContactId)
                 .collect(Collectors.toList())
                 .get(0);
 
-        Assert.assertTrue(testContact2.getGroups().contains(testGroup));
+        Assert.assertTrue(testContactModified.getGroups().contains(testGroup));
 
     }
 

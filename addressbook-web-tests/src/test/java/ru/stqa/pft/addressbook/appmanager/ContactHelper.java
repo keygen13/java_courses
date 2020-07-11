@@ -48,6 +48,12 @@ public class ContactHelper extends HelperBase {
         click(By.name("add"));
     }
 
+    public void removeContactFromGroup(ContactData contact, GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.format("%s", group.getId()));
+        selectContactById(contact.getId());
+        click(By.name("remove"));
+    }
+
     public void goToNewEntryForm() {
         click(By.linkText("add new"));
     }

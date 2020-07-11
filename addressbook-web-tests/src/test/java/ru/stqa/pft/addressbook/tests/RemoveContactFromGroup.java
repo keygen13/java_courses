@@ -6,17 +6,15 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 import java.util.stream.Collectors;
 
-import static ru.stqa.pft.addressbook.tests.TestBase.app;
-
-public class RemoveContactFromGroup {
+public class RemoveContactFromGroup extends TestBase {
 
     @BeforeMethod
     public void ensurePrecondition() {
+        System.out.println("number of groups: " + app.db().groups().size());
         if(app.db().groups().size() == 0) {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test4"));
@@ -37,6 +35,7 @@ public class RemoveContactFromGroup {
 
     @Test
     public void testRemovingFromGroup() {
+        //app.db().groups();
         ContactData testContact = null;
         Contacts contacts = app.db().contacts();
         for(ContactData contact : contacts) {
@@ -51,20 +50,29 @@ public class RemoveContactFromGroup {
         System.out.println(testGroup);
 
         app.goTo().goToHomePage();
-        app.getContactHelper().selectContactById(testContact.getId());
-        app.getContactHelper().addSelectedContactToGroup(testGroup);
+        app.getContactHelper().removeContactFromGroup(testContact, testGroup);
 
         Contacts contacts2 = app.db().contacts();
 
         int testContactId = testContact.getId();
 
-        ContactData testContact2 = contacts2
+        ContactData testContactModified = contacts2
                 .stream()
                 .filter((s) -> s.getId() == testContactId)
                 .collect(Collectors.toList())
                 .get(0);
 
-        Assert.assertTrue(testContact2.getGroups().contains(testGroup));
+        System.out.println("Test contact groups:");
+        for(GroupData group : testContact.getGroups()) {
+            System.out.println(group);
+        }
+        System.out.println("----------------");
+        System.out.println("Modified test contact groups:");
+        for(GroupData group : testContactModified.getGroups()) {
+            System.out.println(group);
+        }
+
+        Assert.assertFalse(testContactModified.getGroups().contains(testGroup));
 
     }
 }

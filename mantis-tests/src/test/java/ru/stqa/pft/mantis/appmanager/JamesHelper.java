@@ -11,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//import static com.sun.deploy.perf.DeployPerfUtil.write;
-
 public class JamesHelper {
     private ApplicationManager app;
     private TelnetClient telnet;

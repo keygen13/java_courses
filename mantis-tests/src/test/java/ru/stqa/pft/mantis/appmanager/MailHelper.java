@@ -47,6 +47,24 @@ public class MailHelper {
         }
     }
 
+    public void deleteAllMail(long timeout) {
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() < start + timeout) {
+           // List<WiserMessage> messages = wiser.getMessages();
+            int messageCount = wiser.getMessages().size();
+            WiserMessage message;
+            for(int i = 0; i < messageCount; i++) {
+                //wiser.getMessages().removeAll()
+                //message = wiser.getMessages().get(0);
+                wiser.getMessages().remove(0);
+            }
+            messageCount = wiser.getMessages().size();
+            messageCount = wiser.getMessages().size();
+        }
+    }
+
+
+
     public void start() {wiser.start();}
 
     public void stop() {wiser.stop();}

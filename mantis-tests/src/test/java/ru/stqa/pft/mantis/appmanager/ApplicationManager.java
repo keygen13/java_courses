@@ -22,6 +22,7 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private PassHelper passHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -67,6 +68,7 @@ public class ApplicationManager {
                 wd = new FirefoxDriver();
             } else if (browser.equals(BrowserType.CHROME)) {
                 wd = new ChromeDriver();
+                wd.manage().window().maximize();
             } else if (browser.equals(BrowserType.IE)) {
                 wd = new InternetExplorerDriver();
             }
@@ -89,6 +91,13 @@ public class ApplicationManager {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
+    }
+
+    public PassHelper pass() {
+        if(passHelper == null) {
+            passHelper = new PassHelper(this);
+        }
+        return passHelper;
     }
 
 }

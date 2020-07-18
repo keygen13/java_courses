@@ -36,8 +36,8 @@ public class PasswordChangeTests extends TestBase {
         mailMessages = app.mail().waitForMail(2, 10000);
         String changedPassword = "drowssap";
         String passConfirmationLink = findPassConfirmationLink(mailMessages, email);
-        changedPassword = "drowssap";
-
+        app.pass().finish(passConfirmationLink, changedPassword);
+        assertTrue(app.newSession().login(user, changedPassword));
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {

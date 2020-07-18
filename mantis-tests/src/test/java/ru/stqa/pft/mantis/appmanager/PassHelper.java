@@ -24,4 +24,11 @@ public class PassHelper extends HelperBase {
         click(By.linkText(username));
         click(By.cssSelector("input[value='Reset Password']"));
     }
+
+    public void finish(String passConfirmationLink, String changedPassword) {
+        wd.get(passConfirmationLink);
+        type(By.name("password"), changedPassword);
+        type(By.name("password_confirm"), changedPassword);
+        click(By.cssSelector("button[type='submit']"));
+    }
 }

@@ -14,19 +14,16 @@ buildscript{
         mavenCentral()
     }
     dependencies {
-        classpath 'no.nils:wsdl2java:0.12'
+        classpath 'no.nils:wsdl2java:0.9'
     }
 }
 
 apply plugin: 'no.nils.wsdl2java'
 
 wsdl2java {
-//    generatedWsdlDir = file("src/main/java")
-    wsdlDir = file("$projectDir/src/main/resources") // define to support incremental build
-    wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
-                          ['src/main/resources/ipservice.wsdl'],
+    generatedWsdlDir = file("src/main/java")
+    wsdlDir = file("src/main/resources")
+    wsdlsToGenerate = [
+        ['src/main/resources/ipservice.wsdl'],
     ]
-//    cxfVersion = "2.5.1"
-//    cxfPluginVersion = "2.4.0"
 }
-

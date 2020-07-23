@@ -2,6 +2,8 @@ package ru.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.By;
 
+import java.sql.*;
+
 public class PassHelper extends HelperBase {
 
     public PassHelper(ApplicationManager app) {
@@ -21,6 +23,30 @@ public class PassHelper extends HelperBase {
     public void sendLinkForPassReset(String username) {
         click(By.linkText(username));
         click(By.cssSelector("input[value='Reset Password']"));
+    }
+
+    public String[] getTestUser() {
+        String[] user = new String[2];
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(app.getProperty("bd.url"));
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select username, email from mantis_user_table where username <> 'administrator'");
+            while (rs.next()) {
+                user[0] = rs.getString("username");
+                user[1] = rs.getString("email");
+                break;
+            }
+            rs.close();
+            st.close();
+            conn.close();
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return user;
     }
 
     public void finish(String passConfirmationLink, String changedPassword) {

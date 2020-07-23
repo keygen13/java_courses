@@ -21,32 +21,14 @@ public class PasswordChangeTests extends TestBase {
 
     @Test
     public void changePasswordTest() throws IOException {
-        String user = null;
-        String email = null;
+        String[] testUserData = app.pass().getTestUser();
+        String user = testUserData[0];
+        String email = testUserData[1];
         String changedPassword = "drowssap";
 
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugtracker?user=root&password=&serverTimezone=UTC");
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select username, email from mantis_user_table where username <> 'administrator'");
-            while (rs.next()) {
-                user = rs.getString("username");
-                email = rs.getString("email");
-                break;
-            }
-            rs.close();
-            st.close();
-            conn.close();
-        } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
         app.pass().start();
         app.pass().sendLinkForPassReset(user);
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+        List<MailMessage> mailMessages = app.mail().waitForMail(2, 20000);
         String passConfirmationLink = findPassConfirmationLink(mailMessages, email);
         app.pass().finish(passConfirmationLink, changedPassword);
         assertTrue(app.newSession().login(user, changedPassword));
